@@ -8,16 +8,35 @@ import name_resolution_functions
 if __name__ == '__main__':
     # Exemplo de uso
     while True:
-        print("1-Lookup\n2-All-Services\n3-Exit")
-        choice=int(input("Enter your choice: "))
-        if choice==1:
-            service_name=input("Enter service name: ")
+        # Limpa a tela
+        cls = lambda: print('\n'*100)
+        # Mostra o menu
+        print('Menu')
+        print('1 - Registrar serviço')
+        print('2 - Consultar serviço')
+        print('3 - Desregistrar serviço')
+        print('4 - Obter todos os serviços')
+        print('5 - Sair')
+        option = input('Digite uma opção: ')
+        if option == '1':
+            service_name = input('Digite o nome do serviço: ')
+            endpoint = input('Digite o endpoint do serviço: ')
+            # Registra o serviço
+            name_resolution_functions.register(service_name, endpoint)
+        elif option == '2':
+            service_name = input('Digite o nome do serviço: ')
+            # Consulta o serviço
             name_resolution_functions.lookup(service_name)
-        elif choice==2:
-            print("All services\n")
+        elif option == '3':
+            service_name = input('Digite o nome do serviço: ')
+            # Desregistra o serviço
+            name_resolution_functions.unregister(service_name)
+        elif option == '4':
+            # Obtém todos os serviços
             name_resolution_functions.all_services()
-        elif choice==3:
+        elif option == '5':
             break
         else:
-            print("Invalid choice")
+            print('Opção inválida')
+        print()
 
