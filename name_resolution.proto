@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+service NameResolution {
+    rpc Register(ServiceInfo) returns (Result);
+    rpc Lookup(ServiceName) returns (Endpoint);
+    rpc Unregister(ServiceName) returns (Result);
+    rpc AllServices(Empty) returns (Services);
+}
+
+message ServiceInfo {
+    string service_name = 1;
+    string endpoint = 2;
+}
+
+message ServiceName {
+    string service_name = 1;
+}
+
+message Endpoint {
+    string endpoint = 1;
+}
+
+message Services {
+    string services = 1;
+}
+
+message Empty {
+}
+
+message Result {
+    string message = 1;
+}
